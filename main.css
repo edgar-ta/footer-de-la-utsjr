@@ -1,0 +1,139 @@
+:root {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body, h3, p, ul, li {
+    margin: 0;
+    padding: 0;
+}
+
+@property --footer__inicio-del-gradiente {
+    syntax: "<color>";
+    inherits: false;
+    initial-value: #002C55;
+}
+
+@property --footer__fin-del-gradiente {
+    syntax: "<color>";
+    inherits: false;
+    initial-value: #00A688;
+}
+
+@property --footer__angulo-del-gradiente {
+    syntax: "<angle>";
+    inherits: false;
+    initial-value: 90deg;
+}
+
+.footer {
+    --footer__espaciado-vertical: 1rem;
+    --footer__tamanio-de-letra-de-subtitulos: 1rem;
+    --footer__tamanio-de-letra-de-texto: 0.75rem;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 20vw;
+    width: 100vw;
+    box-sizing: border-box;
+    background: 
+        url("/assets/2025-12-18--textura-tecnologica.png") bottom left / 20% no-repeat,
+        url("/assets/2025-12-15--logo-ut-para-footer.png") center right / 20% no-repeat,
+        linear-gradient(var(--footer__angulo-del-gradiente), var(--footer__inicio-del-gradiente) 0%, var(--footer__fin-del-gradiente) 100%)
+        ;
+    gap: var(--footer__espaciado-vertical);
+    transition: 
+        250ms ease-in-out --footer__inicio-del-gradiente,
+        250ms ease-in-out --footer__fin-del-gradiente,
+        250ms ease-in-out --footer__angulo-del-gradiente
+        ;
+}
+
+.footer:hover {
+    --footer__inicio-del-gradiente: #014d94;
+    --footer__fin-del-gradiente: #007963;
+    --footer__angulo-del-gradiente: 135deg;
+}
+
+.footer__contenedor-de-bloques {
+    display: flex;
+    flex-direction: row;
+    gap: 4rem;
+    align-items: center;
+}
+
+.footer__bloque {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--footer__espaciado-vertical);
+}
+
+.footer__separador {
+    height: 5vh;
+    width: 0.5px;
+    background-color: white;
+    opacity: 0.75;
+}
+
+.footer__nombre-del-departamento, .footer__direccion, .footer__subtitulo {
+    color: white;
+    opacity: 0.8;
+    text-align: center;
+}
+
+.footer__subtitulo {
+    font-size: var(--footer__tamanio-de-letra-de-subtitulos);
+}
+
+.footer__nombre-del-departamento, .footer__direccion, .footer__lista {
+    font-size: var(--footer__tamanio-de-letra-de-texto);
+}
+
+.footer__lista {
+    list-style-type: none;
+}
+
+.footer__elemento-de-lista {
+    opacity: 0.6;
+    transition: 250ms ease opacity;
+    text-align: center;
+    
+    & a {
+        color: white;
+        text-decoration: none;
+    }
+}
+
+.footer__elemento-de-lista:hover {
+    color: white;
+    opacity: 0.9;
+    transition: 250ms ease opacity;
+    text-decoration: underline;
+}
+
+.footer__logo {
+    max-width: 10rem;
+}
+
+@media (max-width: 650px) {
+    .footer {
+        padding-inline: 10vw;
+        background: 
+            url("/assets/2025-12-18--textura-tecnologica.png") bottom left no-repeat,
+            linear-gradient(var(--footer__angulo-del-gradiente), var(--footer__inicio-del-gradiente) 0%, var(--footer__fin-del-gradiente) 100%)
+            ;
+        background-size: contain;
+    }
+
+    .footer__contenedor-de-bloques {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .footer__separador {
+        width: 5vw;
+        height: 0.5px;
+    }
+}
